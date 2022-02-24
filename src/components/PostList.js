@@ -18,7 +18,7 @@ import Post from './Post'
 const FinalPostList = ({ postList }) => (
   <div>
     {postList.map((post, index) => (
-      <Post key={index} post={post} />
+      <Post key={1} post={post} />
     ))}
   </div>
 )

@@ -8,7 +8,8 @@ const Input = ({ passlayer, posts, setPosts }) => {
   })
 
   const handleChange = e => {
-    const { value } = e.target
+    const { target } = e
+    const { value } = target
     setState({
       ...state,
       [e.target.name]: value,
@@ -16,10 +17,8 @@ const Input = ({ passlayer, posts, setPosts }) => {
   }
 
   const handleSubmit = e => {
-    console.log(state)
     e.preventDefault()
     // then call functions to set the comment
-    console.log('reached setpostst')
     setPosts(
 
       [
@@ -31,15 +30,12 @@ const Input = ({ passlayer, posts, setPosts }) => {
         },
       ],
     )
-    console.log('postswereset')
 
     setState({
       sender: '',
       content: '',
       layer: passlayer,
     })
-
-    console.log('stateswereset')
   }
 
   return (
@@ -48,7 +44,6 @@ const Input = ({ passlayer, posts, setPosts }) => {
 
     >
       <input
-
         type="text"
         name="sender"
         value={state.sender}

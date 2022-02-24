@@ -22,15 +22,24 @@ const Post = ({ post }) => {
     <>
       <Wrapper>
         <p>
-          Sender: {post.sender}
+          Sender:
+          {' '}
+          {post.sender}
         </p>
-        <p>Post Content: {post.content}</p>
+        <p>
+          Post Content:
+          {post.content}
+        </p>
 
-        <button onClick={upVote}>Up-vote</button>
-        <p>Votes: {votes}</p>
-        <button onClick={downVote}>Down-vote</button>
-        
-        <p>Why not send a reply ?</p>
+        <VoteTracker>
+          <button type="button" onClick={upVote}>Up-vote</button>
+
+          <p>{votes}</p>
+
+          <button type="button" onClick={downVote}>Down-vote</button>
+        </VoteTracker>
+
+        <div>Why not send a reply ?</div>
 
         <Input passlayer={0} posts={replies} setPosts={setReplies} />
         <ReplyList replies={replies} />
@@ -45,5 +54,10 @@ export default Post
 const Wrapper = s.div`
   border: 10px solid red;
   padding: 5;
-  justify-content: space-between;
+`
+
+const VoteTracker = s.div`
+  display: flex;
+  flex-direction: row;
+  
 `

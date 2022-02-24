@@ -5,7 +5,7 @@ import Reply from './Reply'
 const FinalReplyList = ({ replyList }) => (
   <div>
     {replyList.map((reply, ind) => (
-      <Reply key={ind} reply={reply} />
+      <Reply key={1} reply={reply} />
     ))}
   </div>
 )

@@ -13,7 +13,7 @@ const Reply = ({ layer, reply, setReply }) => {
   const upVote = () => {
     setVotes(votes + 1)
   }
- 
+
   const downVote = () => {
     setVotes(votes - 1)
   }
@@ -22,14 +22,22 @@ const Reply = ({ layer, reply, setReply }) => {
     <>
       <Wrapper>
         <p>
+          Responder:
+          {' '}
           {reply.sender}
         </p>
-        <p>{reply.content}</p>
+        <p>
+          Reply Content:
+          {reply.content}
+        </p>
 
-        <button onClick={upVote}>Up-vote</button>
-        <p>{votes}</p>
-        <button onClick={downVote}>Down-vote</button>
-        <div>"Why not send a reply ?"</div>
+        <VoteTracker>
+          <button type="button" onClick={upVote}>Up-vote</button>
+          <p>{votes}</p>
+          <button type="button" onClick={downVote}>Down-vote</button>
+        </VoteTracker>
+
+        <div>Why not send a reply ?</div>
         {reply.layer < 2
         && (
         <>
@@ -48,5 +56,10 @@ export default Reply
 const Wrapper = s.div`
   border: 10px solid blue;
   padding: 5;
-  justify-content: space-between;
+`
+
+const VoteTracker = s.div`
+  display: flex;
+  flex-direction: row;
+
 `
