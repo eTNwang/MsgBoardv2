@@ -46,10 +46,11 @@ const Reply = ({ layer, reply, setReply }) => {
         </VoteTracker>
 
         <div>Why not send a reply ?</div>
+
         {reply.layer < 2
         && (
         <>
-          <Input passlayer={reply.layer} posts={state} setPosts={setState} />
+          <Input keyid={reply.id + 1} passlayer={reply.layer} posts={state} setPosts={setState} />
           <ReplyList replies={state} />
         </>
         )}
@@ -71,7 +72,6 @@ const VoteTracker = s.div`
   flex-direction: row;
 
 `
-
 const Flex = s.div`
   margin: 5px;
 `
