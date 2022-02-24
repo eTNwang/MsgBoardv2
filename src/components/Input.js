@@ -1,11 +1,14 @@
 import React from 'react'
 
-const Input = ({ passlayer, posts, setPosts }) => {
+const Input = ({
+  keyid, passlayer, posts, setPosts,
+}) => {
+  let iditerator = keyid
   const [state, setState] = React.useState({
     sender: '',
     content: '',
     layer: 0,
-    id: Math.random(3),
+    id: 0,
   })
 
   const updateinputs = e => {
@@ -20,14 +23,15 @@ const Input = ({ passlayer, posts, setPosts }) => {
   const submitinputs = e => {
     e.preventDefault()
     // then call functions to set the comment
+    iditerator += 1
     setPosts(
-
       [
         ...posts,
         {
           sender: state.sender,
           content: state.content,
           layer: passlayer + 1,
+          id: Math.random(3),
         },
       ],
     )
@@ -36,7 +40,7 @@ const Input = ({ passlayer, posts, setPosts }) => {
       sender: '',
       content: '',
       layer: passlayer,
-      id: Math.random(100),
+      id: keyid,
     })
   }
 

@@ -43,12 +43,10 @@ const Post = ({ post }) => {
           <Flex>
             <button type="button" onClick={downVote}>Down-vote</button>
           </Flex>
-
         </VoteTracker>
 
-        <p>Why not send a reply ?</p>
-
-        <Input passlayer={0} posts={replies} setPosts={setReplies} />
+        <div>Why not send a reply ?</div>
+        <Input keyid={post.id + 1} passlayer={0} posts={replies} setPosts={setReplies} />
         <ReplyList replies={replies} />
       </Wrapper>
     </>
@@ -60,13 +58,13 @@ export default Post
 
 const Wrapper = s.div`
   border: 10px solid red;
-  margin: 5px;
+  padding: 5;
 `
 
 const VoteTracker = s.div`
   display: flex;
   flex-direction: row;
-
+  
 `
 
 const Flex = s.div`

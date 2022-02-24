@@ -1,27 +1,77 @@
-/* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react'
-import Reply from './Reply'
+import s from 'styled-components'
+import Input from './Input'
+import ReplyList from './ReplyList'
 
-const FinalReplyList = ({ replyList }) => (
-  <div>
-    {replyList.map((reply, ind) => (
-      <Reply key={reply.id + Math.random(reply.id + 7)} reply={reply} />
-    ))}
-  </div>
-)
+const Reply = ({ layer, reply, setReply }) => {
+  const [state, setState] = React.useState(
+    [],
+  )
 
-const ReplyList = ({ replies }) => {
-  // const addPost= post => {
-  //   const oldposts = state.posts
-  //   const newposts = oldposts.push(post)
-  //   setState({
-  //     posts: newposts,
-  //   })
-  // }
+  const [votes, setVotes] = useState(0)
 
-  const replyList = replies
+  const upVote = () => {
+    setVotes(votes + 1)
+  }
 
-  return <FinalReplyList replyList={replyList} />
+  const downVote = () => {
+    setVotes(votes - 1)
+  }
+  return (
+
+    <>
+      <Wrapper>
+        <p>
+          Responder:
+          {' '}
+          {reply.sender}
+        </p>
+        <p>
+          Reply Content:
+          {reply.content}
+        </p>
+
+        <VoteTracker>
+          <Flex>
+            <button type="button" onClick={upVote}>Up-vote</button>
+          </Flex>
+
+          <Flex>
+            <>{votes}</>
+          </Flex>
+
+          <Flex>
+            <button type="button" onClick={downVote}>Down-vote</button>
+          </Flex>
+        </VoteTracker>
+
+        <div>Why not send a reply ?</div>
+
+        {reply.layer < 2
+        && (
+        <>
+          <Input keyid={reply.id + 1} passlayer={reply.layer} posts={state} setPosts={setState} />
+          <ReplyList replies={state} />
+        </>
+        )}
+
+      </Wrapper>
+    </>
+  )
 }
 
-export default ReplyList
+export default Reply
+
+const Wrapper = s.div`
+  border: 10px solid blue;
+  padding: 5;
+`
+
+const VoteTracker = s.div`
+  display: flex;
+  flex-direction: row;
+
+`
+const Flex = s.div`
+  margin: 5px;
+`
