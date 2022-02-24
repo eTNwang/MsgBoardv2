@@ -18,7 +18,7 @@ import Post from './Post'
 const FinalPostList = ({ postList }) => (
   <div>
     {postList.map((post, index) => (
-      <Post key={1} post={post} />
+      <Post key={Math.random(Math.random(3))} post={post} />
     ))}
   </div>
 )
