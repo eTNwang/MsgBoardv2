@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <Title />
-      <Input passlayer={0} posts={posts} setPosts={setPosts} />
+      <Input keyid={0} passlayer={0} posts={posts} setPosts={setPosts} />
       <PostList posts={posts} />
 
     </>

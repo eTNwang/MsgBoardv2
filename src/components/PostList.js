@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react'
 import Post from './Post'
+import Reply from './Reply'
 
 // const constructList= posts => {
 
@@ -18,7 +19,7 @@ import Post from './Post'
 const FinalPostList = ({ postList }) => (
   <div>
     {postList.map((post, index) => (
-      <Post key={Math.random(Math.random(3))} post={post} />
+      <Post key={post.id} post={post} />
     ))}
   </div>
 )

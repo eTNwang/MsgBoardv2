@@ -1,13 +1,17 @@
 import React from 'react'
 
-const Input = ({ passlayer, posts, setPosts }) => {
+const Input = ({
+  keyid, passlayer, posts, setPosts,
+}) => {
+  let iditerator = keyid
   const [state, setState] = React.useState({
     sender: '',
     content: '',
     layer: 0,
+    id: 0,
   })
 
-  const handleChange = e => {
+  const updateinputs = e => {
     const { target } = e
     const { value } = target
     setState({
@@ -16,17 +20,18 @@ const Input = ({ passlayer, posts, setPosts }) => {
     })
   }
 
-  const handleSubmit = e => {
+  const submitinputs = e => {
     e.preventDefault()
     // then call functions to set the comment
+    iditerator += 1
     setPosts(
-
       [
         ...posts,
         {
           sender: state.sender,
           content: state.content,
           layer: passlayer + 1,
+          id: Math.random(3),
         },
       ],
     )
@@ -35,12 +40,13 @@ const Input = ({ passlayer, posts, setPosts }) => {
       sender: '',
       content: '',
       layer: passlayer,
+      id: keyid,
     })
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={submitinputs}
 
     >
       <input
@@ -48,7 +54,7 @@ const Input = ({ passlayer, posts, setPosts }) => {
         name="sender"
         value={state.sender}
         placeholder="Enter your name"
-        onChange={handleChange}
+        onChange={updateinputs}
       />
       <br />
       <input
@@ -56,7 +62,7 @@ const Input = ({ passlayer, posts, setPosts }) => {
         name="content"
         value={state.content}
         placeholder="Write a post"
-        onChange={handleChange}
+        onChange={updateinputs}
 
       />
       <br />

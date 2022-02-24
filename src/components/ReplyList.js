@@ -5,7 +5,7 @@ import Reply from './Reply'
 const FinalReplyList = ({ replyList }) => (
   <div>
     {replyList.map((reply, ind) => (
-      <Reply key={Math.random(Math.random(5))} reply={reply} />
+      <Reply key={reply.id} reply={reply} />
     ))}
   </div>
 )
