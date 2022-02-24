@@ -5,10 +5,9 @@ const Input = ({ passlayer, posts, setPosts }) => {
     sender: '',
     content: '',
     layer: 0,
-    id: Math.random(3),
   })
 
-  const updateinputs = e => {
+  const handleChange = e => {
     const { target } = e
     const { value } = target
     setState({
@@ -17,7 +16,7 @@ const Input = ({ passlayer, posts, setPosts }) => {
     })
   }
 
-  const submitinputs = e => {
+  const handleSubmit = e => {
     e.preventDefault()
     // then call functions to set the comment
     setPosts(
@@ -36,13 +35,12 @@ const Input = ({ passlayer, posts, setPosts }) => {
       sender: '',
       content: '',
       layer: passlayer,
-      id: Math.random(100),
     })
   }
 
   return (
     <form
-      onSubmit={submitinputs}
+      onSubmit={handleSubmit}
 
     >
       <input
@@ -50,7 +48,7 @@ const Input = ({ passlayer, posts, setPosts }) => {
         name="sender"
         value={state.sender}
         placeholder="Enter your name"
-        onChange={updateinputs}
+        onChange={handleChange}
       />
       <br />
       <input
@@ -58,7 +56,7 @@ const Input = ({ passlayer, posts, setPosts }) => {
         name="content"
         value={state.content}
         placeholder="Write a post"
-        onChange={updateinputs}
+        onChange={handleChange}
 
       />
       <br />

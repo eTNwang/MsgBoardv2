@@ -32,21 +32,14 @@ const Post = ({ post }) => {
         </p>
 
         <VoteTracker>
-          <Flex>
-            <button type="button" onClick={upVote}>Up-vote</button>
-          </Flex>
+          <button type="button" onClick={upVote}>Up-vote</button>
 
-          <Flex>
-            <>{votes}</>
-          </Flex>
+          <p>{votes}</p>
 
-          <Flex>
-            <button type="button" onClick={downVote}>Down-vote</button>
-          </Flex>
-
+          <button type="button" onClick={downVote}>Down-vote</button>
         </VoteTracker>
 
-        <p>Why not send a reply ?</p>
+        <div>Why not send a reply ?</div>
 
         <Input passlayer={0} posts={replies} setPosts={setReplies} />
         <ReplyList replies={replies} />
@@ -60,15 +53,11 @@ export default Post
 
 const Wrapper = s.div`
   border: 10px solid red;
-  margin: 5px;
+  padding: 5;
 `
 
 const VoteTracker = s.div`
   display: flex;
   flex-direction: row;
-
-`
-
-const Flex = s.div`
-  margin: 5px;
+  
 `
