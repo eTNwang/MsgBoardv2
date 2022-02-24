@@ -32,9 +32,17 @@ const Reply = ({ layer, reply, setReply }) => {
         </p>
 
         <VoteTracker>
-          <button type="button" onClick={upVote}>Up-vote</button>
-          <p>{votes}</p>
-          <button type="button" onClick={downVote}>Down-vote</button>
+          <Flex>
+            <button type="button" onClick={upVote}>Up-vote</button>
+          </Flex>
+
+          <Flex>
+            <>{votes}</>
+          </Flex>
+
+          <Flex>
+            <button type="button" onClick={downVote}>Down-vote</button>
+          </Flex>
         </VoteTracker>
 
         <div>Why not send a reply ?</div>
@@ -62,4 +70,8 @@ const VoteTracker = s.div`
   display: flex;
   flex-direction: row;
 
+`
+
+const Flex = s.div`
+  margin: 5px;
 `
